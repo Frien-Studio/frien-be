@@ -1,4 +1,3 @@
-import uuid
 from sqlalchemy import Column, Text, TIMESTAMP, ForeignKey
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.dialects.postgresql import UUID
@@ -8,8 +7,8 @@ from app.db.base import Base
 class Conversation(Base):
     __tablename__ = "conversations"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), nullable=False)
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, nullable=False)
     title = Column(Text)
     created_at = Column(TIMESTAMP(timezone=True), server_default=func.now())
 
@@ -17,9 +16,9 @@ class Conversation(Base):
 class Message(Base):
     __tablename__ = "messages"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Integer, primary_key=True)
     conversation_id = Column(
-        UUID(as_uuid=True),
+        Integer,
         ForeignKey("conversations.id", ondelete="CASCADE"),
         nullable=False,
     )
