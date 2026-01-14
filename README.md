@@ -70,7 +70,6 @@ cd frien-be/backend
 Create a `.env` file:
 
 ```env
-DATABASE_URL=postgresql+psycopg2://chatuser:chatpass@localhost:55432/chatdb
 ```
 
 ---
